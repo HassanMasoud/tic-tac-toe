@@ -70,3 +70,22 @@ body {
 .cell.x::after {
   transform: rotate(-45deg);
 }
+
+.cell.circle::before,
+.cell.circle::after {
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+}
+
+.cell.circle::before {
+  width: calc(var(--mark-size) * 0.9);
+  height: calc(var(--mark-size) * 0.9);
+  background-color: black;
+}
+
+.cell.circle::after {
+  width: calc(var(--mark-size) * 0.6);
+  height: calc(var(--mark-size) * 0.6);
+  background-color: white;
+}
