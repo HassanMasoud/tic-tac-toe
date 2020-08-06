@@ -11,8 +11,12 @@ const WINNING_COMBINATIONS = [
   [2, 4, 6],
 ];
 const cellElements = document.querySelectorAll("[data-cell]");
-let circleTurn;
+const winningMessageElement = document.querySelector(".winning-message");
+const winningMessageTextElement = document.querySelector(
+  "[data-winning-message-text]"
+);
 const board = document.getElementById("board");
+let circleTurn;
 
 startGame();
 
@@ -30,7 +34,7 @@ function handleClick(e) {
   placeMark(cell, currentClass);
   // check for win
   if (checkWin(currentClass)) {
-    console.log("winner");
+    endGame(false);
   }
   // check for draw
   swapTurns();
@@ -57,4 +61,12 @@ function checkWin(currentClass) {
       return cellElements[index].classList.contains(currentClass);
     });
   });
+}
+
+function endGame(draw) {
+  if (draw) {
+  } else {
+    winningMessageTextElement.innerText = `${circleTurn ? "O" : "X"} Wins!`;
+  }
+  winningMessageElement.classList.add("show");
 }
