@@ -67,7 +67,7 @@ function checkWin(currentClass) {
 
 function endGame(draw) {
   if (draw) {
-    winningMessageElement.innerText = "Draw!";
+    winningMessageTextElement.innerText = "Draw!";
   } else {
     winningMessageTextElement.innerText = `${circleTurn ? "O" : "X"} Wins!`;
   }
