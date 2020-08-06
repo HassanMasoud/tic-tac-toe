@@ -11,21 +11,28 @@ const WINNING_COMBINATIONS = [
   [2, 4, 6],
 ];
 const cellElements = document.querySelectorAll("[data-cell]");
+const board = document.getElementById("board");
 const winningMessageElement = document.querySelector(".winning-message");
 const winningMessageTextElement = document.querySelector(
   "[data-winning-message-text]"
 );
-const board = document.getElementById("board");
+const restartButton = document.getElementById("restartButton");
 let circleTurn;
 
 startGame();
 
+restartButton.addEventListener("click", startGame);
+
 function startGame() {
   circleTurn = false;
   cellElements.forEach((cell) => {
+    cell.classList.remove(X_CLASS);
+    cell.classList.remove(CIRCLE_CLASS);
+    cell.removeEventListener("click", handleClick);
     cell.addEventListener("click", handleClick, { once: true });
   });
   setBoardHoverClass();
+  winningMessageElement.classList.remove("show");
 }
 
 function handleClick(e) {
