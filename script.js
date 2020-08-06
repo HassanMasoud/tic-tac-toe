@@ -4,9 +4,15 @@ const cellElements = document.querySelectorAll("[data-cell]");
 let circleTurn;
 const board = document.getElementById("board");
 
-cellElements.forEach((cell) => {
-  cell.addEventListener("click", handleClick, { once: true });
-});
+startGame();
+
+function startGame() {
+  circleTurn = false;
+  cellElements.forEach((cell) => {
+    cell.addEventListener("click", handleClick, { once: true });
+  });
+  setBoardHoverClass();
+}
 
 function handleClick(e) {
   const cell = e.target;
